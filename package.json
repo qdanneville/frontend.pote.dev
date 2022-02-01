@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "cypress":"cypress open"
+  },
+  "dependencies": {
+    "axios": "^0.25.0",
+    "next": "latest",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^7.3.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-query": "^3.34.12",
+    "tailwindcss": "^3.0.18"
+  },
+  "devDependencies": {
+    "cypress": "^9.4.1"
+  }
+}
