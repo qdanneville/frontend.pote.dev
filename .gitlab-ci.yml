@@ -1,0 +1,36 @@
+image:
+  name: docker/compose:1.27.4
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+
+before_script:
+  - "which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )"
+  - mkdir -p ~/.ssh
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 700 ~/.ssh/id_rsa
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/id_rsa
+  - ssh-keyscan -t rsa 64.227.1.160 > ~/.ssh/known_hosts
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  - chmod 644 ~/.ssh/known_hosts
+
+build:
+  stage: build
+  script:
+    - docker-compose up
+    - docker push nextjs
+    - docker push nginx
+
+deploy:
+  stage: deploy
+  script:
+    - ssh $SSH_PRIVATE_KEY@$SSH_SERVER
+    - docker pull nextjs
+    - docker pull nginx
+    - docker-compose up

@@ -4,9 +4,9 @@ import Head from 'next/head'
 import { fetchFormations } from '../hooks'
 import { FormationList } from '../components/FormationList'
 
-export default function Home({dehydratedState}) {
+export default function Home() {
 
-  console.log(dehydratedState);
+  console.log('Home updated from docker ?')
 
   return (
     <>

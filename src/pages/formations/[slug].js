@@ -7,8 +7,6 @@ export default function Formation() {
     const router = useRouter()
     const { slug } = router.query
 
-    console.log('current slug :', slug)
-
     const { data, isLoading } = useFormationBySlug(slug)
     const title = data?.props.title
 

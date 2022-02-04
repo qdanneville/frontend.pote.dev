@@ -9,7 +9,7 @@ export const FormationList = () => {
 
     return (
         <section>
-            <ul>
+            <ul className='formation-list'>
                 {data?.map((formation, index) => (
                     <li key={formation.id}>
                         <div>
