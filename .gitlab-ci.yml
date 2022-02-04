@@ -1,5 +1,6 @@
 image:
-  name: alpine:latest
+  name: docker/compose:1.27.1
+  entrypoint: ['']
 
 services:
   - docker:dind
