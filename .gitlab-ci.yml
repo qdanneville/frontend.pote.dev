@@ -10,7 +10,7 @@ stages:
 
 
 before_script:
-  - "which ssh-agent || (apk update && apk add openssh"
+  - "which ssh-agent || (apk update && apk add openssh)"
   - mkdir -p ~/.ssh
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
   - chmod 700 ~/.ssh/id_rsa
