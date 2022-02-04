@@ -16,7 +16,7 @@ before_script:
   - ssh-add ~/.ssh/id_rsa
   - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
 #  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-#  - chmod 644 ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
 
 #build:
 #  stage: build
