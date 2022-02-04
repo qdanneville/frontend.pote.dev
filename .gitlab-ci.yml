@@ -1,12 +1,11 @@
 image:
-  name: docker:latest
+  name: docker/compose:1.27.4
 
 services:
   - docker:dind
 
 stages:
-  - build
-  - deploy
+  - test
 
 
 before_script:
@@ -21,8 +20,6 @@ before_script:
 #  - chmod 644 ~/.ssh/known_hosts
 
 build:
-  image:
-    name: docker:latest
   stage: build
   script:
     - docker-compose up
@@ -30,8 +27,6 @@ build:
     - docker push nginx
 
 deploy:
-  image:
-    name: docker:latest
   stage: deploy
   script:
     - ssh $SSH_PRIVATE_KEY@$SSH_SERVER
