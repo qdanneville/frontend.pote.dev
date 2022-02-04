@@ -23,14 +23,14 @@ export default function Home() {
   )
 }
 
-export async function getStaticProps() {
-  const queryClient = new QueryClient()
+// export async function getStaticProps() {
+//   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery(['formations'], () => fetchFormations())
+//   await queryClient.prefetchQuery(['formations'], () => fetchFormations())
 
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  }
-}
+//   return {
+//     props: {
+//       dehydratedState: dehydrate(queryClient),
+//     },
+//   }
+// }

@@ -19,22 +19,22 @@ export default function Formation() {
     </>
 }
 
-export async function getStaticPaths() {
-    const paths = await fetchAllFormationsSlug()
-    return {
-        paths,
-        fallback: true,
-    }
-}
+// export async function getStaticPaths() {
+//     const paths = await fetchAllFormationsSlug()
+//     return {
+//         paths,
+//         fallback: true,
+//     }
+// }
 
-export async function getStaticProps({ params }) {
-    const queryClient = new QueryClient()
+// export async function getStaticProps({ params }) {
+//     const queryClient = new QueryClient()
 
-    await queryClient.prefetchQuery(['formation'], () => fetchFormationBySlug(params.slug))
+//     await queryClient.prefetchQuery(['formation'], () => fetchFormationBySlug(params.slug))
 
-    return {
-        props: {
-            dehydratedState: dehydrate(queryClient)
-        },
-    }
-}
+//     return {
+//         props: {
+//             dehydratedState: dehydrate(queryClient)
+//         },
+//     }
+// }
