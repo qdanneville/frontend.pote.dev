@@ -5,8 +5,7 @@ services:
   - docker:dind
 
 stages:
-  - build
-  - deploy
+  - test
 
 
 before_script:
@@ -19,6 +18,9 @@ before_script:
   - ssh-keyscan -t rsa 64.227.1.160 > ~/.ssh/known_hosts
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   - chmod 644 ~/.ssh/known_hosts
+
+test:
+  stage: test
 
 #build:
 #  image:
