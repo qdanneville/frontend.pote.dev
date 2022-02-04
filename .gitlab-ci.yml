@@ -21,6 +21,8 @@ before_script:
 
 test:
   stage: test
+  script:
+    - ls
 
 #build:
 #  image:
