@@ -17,7 +17,7 @@ before_script:
   - eval "$(ssh-agent -s)"
   - ssh-add ~/.ssh/id_rsa
   - ssh-keyscan -t rsa 64.227.1.160 > ~/.ssh/known_hosts
-  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+#  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 #  - chmod 644 ~/.ssh/known_hosts
 
 test:
