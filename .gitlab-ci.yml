@@ -28,7 +28,7 @@ before_script:
 deploy:
   stage: deploy
   script:
-    - ssh $SSH_PRIVATE_KEY@$SSH_SERVER
+    - ssh potedev@85.208.144.169
 #    - docker pull nextjs
 #    - docker pull nginx
     - docker-compose up --build -d
