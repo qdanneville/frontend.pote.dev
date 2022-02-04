@@ -1,5 +1,5 @@
 image:
-  name: alpine:latest
+  name: docker:git
 
 services:
   - docker:dind
@@ -10,7 +10,6 @@ stages:
 
 
 before_script:
-  - "which ssh-agent || ( apk update && apk-install openssh-client -y)"
   - mkdir -p ~/.ssh
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
   - chmod 700 ~/.ssh/id_rsa
