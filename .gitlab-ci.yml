@@ -1,5 +1,5 @@
 image:
-  name: docker/compose:1.27.4
+  name: alpine:latest
 
 services:
   - docker:dind
@@ -10,7 +10,7 @@ stages:
 
 
 before_script:
-  - "which ssh-agent || ( apk update && apk-install openssh-client -y )"
+  - "which ssh-agent || ( apk add openssh-client apk add --update bash)"
   - mkdir -p ~/.ssh
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
   - chmod 700 ~/.ssh/id_rsa
@@ -21,6 +21,8 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
 
 build:
+  image:
+    name: docker/compose:1.27.4
   stage: build
   script:
     - docker-compose up
@@ -28,6 +30,8 @@ build:
     - docker push nginx
 
 deploy:
+  image:
+    name: docker/compose:1.27.4
   stage: deploy
   script:
     - ssh $SSH_PRIVATE_KEY@$SSH_SERVER
