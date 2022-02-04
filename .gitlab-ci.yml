@@ -20,21 +20,21 @@ before_script:
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   - chmod 644 ~/.ssh/known_hosts
 
-build:
-  image:
-    name: docker/compose:1.27.4
-  stage: build
-  script:
-    - docker-compose up
-    - docker push nextjs
-    - docker push nginx
+#build:
+#  image:
+#    name: docker/compose:1.27.4
+#  stage: build
+#  script:
+#    - docker-compose up
+#    - docker push nextjs
+#    - docker push nginx
 
-deploy:
-  image:
-    name: docker/compose:1.27.4
-  stage: deploy
-  script:
-    - ssh $SSH_PRIVATE_KEY@$SSH_SERVER
-    - docker pull nextjs
-    - docker pull nginx
-    - docker-compose up
+#deploy:
+#  image:
+#    name: docker/compose:1.27.4
+#  stage: deploy
+#  script:
+#    - ssh $SSH_PRIVATE_KEY@$SSH_SERVER
+#    - docker pull nextjs
+#    - docker pull nginx
+#    - docker-compose up
