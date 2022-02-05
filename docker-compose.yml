@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   nextjs:
-    image: "nextjs"
+    image: registry.gitlab.com/pote.dev/website:nextjs
     container_name: nextjs
     ports:
       - "3001:3001"
@@ -11,7 +11,7 @@ services:
       dockerfile: Dockerfile
     restart: always
   nginx:
-    image: "nginx"
+    image: registry.gitlab.com/pote.dev/website:nginx
     container_name: nginx
     build: ./nginx
     ports:

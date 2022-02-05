@@ -5,7 +5,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install PM2 globally
-RUN npm install --global pm2
+#RUN npm install --global pm2
 
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
