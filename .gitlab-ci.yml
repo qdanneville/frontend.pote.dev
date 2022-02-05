@@ -18,7 +18,7 @@ before_script:
   - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   - chmod 644 ~/.ssh/known_hosts
-  - docker login registry.gitlab.com -u $USERNAME -p $TOKEN
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
 
 build:
   stage: build
