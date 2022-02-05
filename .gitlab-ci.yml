@@ -17,6 +17,7 @@ before_script:
   - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   - chmod 644 ~/.ssh/known_hosts
+  - docker login registry.gitlab.com -u $USERNAME -p $TOKEN
 
 #build:
 #  stage: build
@@ -28,7 +29,8 @@ before_script:
 deploy:
   stage: deploy
   script:
-    - ssh potedev@85.208.144.169
+     - ls
+#    - scp -r ./.env ./nginx/nginx.conf ./docker-compose.yml $SSH_USER@$SSH_SERVER:/app
 #    - docker pull nextjs
 #    - docker pull nginx
-    - docker-compose up --build -d
+#    - docker-compose --verbose -H "ssh://potedev@85.208.144.169" up --build -d
