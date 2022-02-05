@@ -33,4 +33,4 @@ deploy:
   script:
     - chmod +x ./deploy.sh
     - scp -r ./nginx/default.conf ./docker-compose.yml $SSH_USER@$SSH_SERVER:/home/potedev/app
-    - bash ./deploy.sh
+    - ssh $SSH_USER@$SSH_SERVER:/home/potedev/app && docker login registry.gitlab.com -u $USERNAME -p $TOKEN && docker pull registry.gitlab.com/pote.dev/website:nextjs
