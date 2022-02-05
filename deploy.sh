@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ssh -o StrictHostKeyChecking=no potedev@$SSH_SERVER:/home/potedev << 'ENDSSH'
+ssh $SSH_USER@$SSH_SERVER:/home/potedev << 'ENDSSH'
     cd /app
     docker login registry.gitlab.com -u $USERNAME -p $TOKEN
     docker pull registry.gitlab.com/pote.dev/website:nextjs
