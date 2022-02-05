@@ -32,5 +32,5 @@ deploy:
   stage: deploy
   script:
     - chmod +x ./deploy.sh
-    - scp -r ./nginx/nginx.conf ./docker-compose.yml $SSH_USER@$SSH_SERVER:/home/potedev/app
+    - scp -r ./nginx/default.conf ./docker-compose.yml $SSH_USER@$SSH_SERVER:/home/potedev/app
     - bash ./deploy.sh
