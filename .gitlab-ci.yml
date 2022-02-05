@@ -10,6 +10,7 @@ stages:
 
 before_script:
   - "which ssh-agent || (apk update && apk add openssh)"
+  - apk add bash
   - mkdir -p ~/.ssh
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
   - chmod 700 ~/.ssh/id_rsa
@@ -30,7 +31,6 @@ build:
 deploy:
   stage: deploy
   script:
-#    - scp -r ./.env ./nginx/nginx.conf ./docker-compose.yml $SSH_USER@$SSH_SERVER:/app
-    - docker pull registry.gitlab.com/pote.dev/website:nextjs
-    - docker pull registry.gitlab.com/pote.dev/website:nginx
-#    - docker-compose --verbose -H "ssh://potedev@85.208.144.169" up --build -d
+    - chmod +x ./deploy.sh
+    - scp -r ./nginx/nginx.conf ./docker-compose.yml $SSH_USER@$SSH_SERVER:/app
+    - bash ./deploy.sh
