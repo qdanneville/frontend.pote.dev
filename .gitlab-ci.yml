@@ -5,7 +5,8 @@ services:
   - docker:dind
 
 stages:
-  - deploy
+  - build
+#  - deploy
 
 before_script:
   - "which ssh-agent || (apk update && apk add openssh)"
@@ -19,17 +20,17 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
   - docker login registry.gitlab.com -u $USERNAME -p $TOKEN
 
-#build:
-#  stage: build
-#  script:
-#    - docker-compose up --build -d
-#    - docker push nextjs
-#    - docker push nginx
-
-deploy:
-  stage: deploy
+build:
+  stage: build
   script:
-     - ls
+    - docker-compose up --build -d
+    - docker push nextjs
+    - docker push nginx
+
+#deploy:
+#  stage: deploy
+#  script:
+#     - ls
 #    - scp -r ./.env ./nginx/nginx.conf ./docker-compose.yml $SSH_USER@$SSH_SERVER:/app
 #    - docker pull nextjs
 #    - docker pull nginx
