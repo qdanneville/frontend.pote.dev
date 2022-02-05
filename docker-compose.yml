@@ -13,6 +13,8 @@ services:
   nginx:
     image: registry.gitlab.com/pote.dev/website:nginx
     container_name: nginx
-    build: ./nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     ports:
       - 80:80
