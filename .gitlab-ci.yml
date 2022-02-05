@@ -32,6 +32,6 @@ deploy:
   stage: deploy
   script:
     - chmod +x ./deploy.sh
-    - scp -r ./nginx ./docker-compose.yml $SSH_USER@$SSH_SERVER:/home/potedev/app
+    - scp -r ./nginx ./docker-compose.yml ./Dockerfile $SSH_USER@$SSH_SERVER:/home/potedev/app
 #    - ssh $SSH_USER@$SSH_SERVER:/home/potedev/app && docker login registry.gitlab.com -u $USERNAME -p $TOKEN
     - bash ./deploy.sh
