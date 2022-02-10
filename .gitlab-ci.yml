@@ -24,7 +24,7 @@ before_script:
 build:
   stage: build
   script:
-    - docker-compose --build -d
+    - docker-compose build --no-cache
     - docker push registry.gitlab.com/pote.dev/website:nextjs
     - docker push registry.gitlab.com/pote.dev/website:nginx
 
