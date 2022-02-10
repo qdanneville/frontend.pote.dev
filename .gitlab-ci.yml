@@ -5,7 +5,7 @@ services:
   - docker:dind
 
 stages:
-#  - build
+  - build
   - deploy
 
 before_script:
@@ -21,17 +21,16 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
   - docker login registry.gitlab.com -u $USERNAME -p $TOKEN
 
-#build:
-#  stage: build
-#  script:
-#    - docker-compose up --build -d
-#    - docker push registry.gitlab.com/pote.dev/website:nextjs
-#    - docker push registry.gitlab.com/pote.dev/website:nginx
+build:
+  stage: build
+  script:
+    - docker-compose --build -d
+    - docker push registry.gitlab.com/pote.dev/website:nextjs
+    - docker push registry.gitlab.com/pote.dev/website:nginx
 
 deploy:
   stage: deploy
   script:
     - chmod +x ./deploy.sh
     - scp -r ./nginx ./docker-compose.yml ./Dockerfile $SSH_USER@$SSH_SERVER:/home/potedev/app
-#    - ssh $SSH_USER@$SSH_SERVER:/home/potedev/app && docker login registry.gitlab.com -u $USERNAME -p $TOKEN
     - bash ./deploy.sh
