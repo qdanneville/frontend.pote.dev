@@ -43,9 +43,11 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-EXPOSE 3000
+ARG APP_PORT
 
-ENV PORT 3000
+EXPOSE APP_PORT
+
+ENV PORT APP_PORT
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
