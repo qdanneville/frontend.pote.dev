@@ -19,18 +19,23 @@ before_script:
   - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   - chmod 644 ~/.ssh/known_hosts
+  - export IMAGE=$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
   - docker login registry.gitlab.com -u $USERNAME -p $TOKEN
+  - bash ./scripts/setup_env.sh
 
 build:
   stage: build
   script:
-    - docker-compose build --no-cache
-    - docker push registry.gitlab.com/pote.dev/website:nextjs
-    - docker push registry.gitlab.com/pote.dev/website:nginx
+    - export NEXTJS_IMAGE=$IMAGE:nextjs
+    - docker pull $IMAGE:nextjs || true
+    - docker-compose -f docker-compose.yml build --no-cache
+    - docker push $IMAGE:nextjs
 
 deploy:
   stage: deploy
   script:
     - chmod +x ./deploy.sh
-    - scp -r ./* $SSH_USER@$SSH_SERVER:/home/potedev/app/website
-    - bash ./deploy.sh
+    - export NEXTJS_IMAGE=$IMAGE:nextjs
+    - chmod +x ./scripts/deploy.sh
+    - scp -r ./.env ./.dockerignore ./* $SSH_USER@$SSH_SERVER:~/app/website
+    - bash ./scripts/deploy.sh

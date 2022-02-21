@@ -5,9 +5,6 @@ RUN apk add --no-cache git
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Install PM2 globally
-RUN npm install --global pm2
-
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
@@ -43,11 +40,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-ARG APP_PORT
-
-EXPOSE APP_PORT
-
-ENV PORT APP_PORT
+ARG APP_PORT=3000
+EXPOSE ${APP_PORT}
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
