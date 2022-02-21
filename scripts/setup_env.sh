@@ -1,4 +1,9 @@
+
+#API
+echo API_BASE_URL=$API_BASE_URL >> .env
+
 echo NEXTJS_IMAGE=$IMAGE:nextjs  >> .env
+
 echo APP_PORT=$APP_PORT  >> .env
 
 #NGINX
@@ -8,5 +13,3 @@ echo VIRTUAL_PORT=$APP_PORT >> .env
 echo LETSENCRYPT_HOST=$LETSENCRYPT_HOST >> .env
 echo LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL >> .env
 
-#API
-echo API_BASE_URL=$API_BASE_URL >> .env
