@@ -4,15 +4,16 @@ image:
 services:
   - docker:dind
 
-variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
+#variables:
+#    DOCKER_HOST: tcp://docker:2375
+#    DOCKER_TLS_CERTDIR: ""
 
 stages:
   - build
   - deploy
 
 before_script:
+  - docker info
   - "which ssh-agent || (apk update && apk add openssh)"
   - apk add bash
   - mkdir -p ~/.ssh
