@@ -5,7 +5,7 @@ services:
   - docker:dind
 
 stages:
-#  - build
+  - build
   - deploy
 
 before_script:
@@ -23,13 +23,13 @@ before_script:
   - docker login registry.gitlab.com -u $USERNAME -p $TOKEN
   - bash ./scripts/setup_env.sh
 
-#build:
-#  stage: build
-#  script:
-#    - export NEXTJS_IMAGE=$IMAGE:nextjs
-#    - docker pull $IMAGE:nextjs || true
-#    - docker-compose -f docker-compose.yml build --no-cache
-#    - docker push $IMAGE:nextjs
+build:
+  stage: build
+  script:
+    - export NEXTJS_IMAGE=$IMAGE:nextjs
+    - docker pull $IMAGE:nextjs || true
+    - docker-compose -f docker-compose.yml build --no-cache
+    - docker push $IMAGE:nextjs
 
 deploy:
   stage: deploy
