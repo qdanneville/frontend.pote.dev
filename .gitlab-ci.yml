@@ -39,7 +39,7 @@ build:
 deploy:
   stage: deploy
   script:
-    - chmod +x ./deploy.sh
+    - chmod +x ./scripts/deploy.sh
     - export NEXTJS_IMAGE=$IMAGE:nextjs
     - chmod +x ./scripts/deploy.sh
     - scp -r ./.env ./.dockerignore ./* $SSH_USER@$SSH_SERVER:~/app/website
