@@ -6,8 +6,6 @@ import { FormationList } from '../components/FormationList'
 
 export default function Home() {
 
-  console.log('Home updated from docker ?')
-
   return (
     <>
       <Head>
@@ -23,14 +21,14 @@ export default function Home() {
   )
 }
 
-// export async function getStaticProps() {
-//   const queryClient = new QueryClient()
+export async function getStaticProps() {
+  const queryClient = new QueryClient()
 
-//   await queryClient.prefetchQuery(['formations'], () => fetchFormations())
+  await queryClient.prefetchQuery(['formations'], () => fetchFormations())
 
-//   return {
-//     props: {
-//       dehydratedState: dehydrate(queryClient),
-//     },
-//   }
-// }
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+}
