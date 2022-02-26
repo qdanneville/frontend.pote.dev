@@ -2,6 +2,8 @@ import React from 'react'
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
+import { Layout } from '../components/Layout'
+
 import '../styles/global.css'
 
 export default function MyApp({ Component, pageProps }) {
@@ -10,7 +12,9 @@ export default function MyApp({ Component, pageProps }) {
     return (
         <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>
-                <Component {...pageProps} />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
                 <ReactQueryDevtools initialIsOpen={true} />
             </Hydrate>
         </QueryClientProvider>

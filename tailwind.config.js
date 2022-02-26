@@ -1,6 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
+    darkMode: 'class',
     purge: [
         // Use *.tsx if using TypeScript
         './src/pages/**/*.js',
@@ -12,14 +13,18 @@ module.exports = {
             current: 'currentColor',
             'white': '#ffffff',
             'yellow': '#FED18A',
-            'dark-blue': '#2A2744',
+            'dark-blue': {
+                500: '#45406d',
+                900: '#2A2744',
+              },
             'blue': '#A6BFFF',
             'pink': '#FFC3C3',
             'red':colors.red,
             'green':colors.green,
             'black':colors.black,
-            'grey':colors.gray,
-            'teal':colors.teal
+            'gray':colors.gray,
+            'teal':colors.teal,
+            'slate':colors.slate
         },
     }
     // ...
