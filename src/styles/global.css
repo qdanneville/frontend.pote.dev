@@ -5,7 +5,60 @@
 @layer components {
     .button {
         /* @apply ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-dark-blue-900 hover:bg-dark-blue-500 cursor-pointer */
-        @apply bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto cursor-pointer font-light
+        @apply bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-yellow focus:ring-offset-2 focus:ring-offset-yellow text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto cursor-pointer font-light
     }
+    
+    @media (min-width: 640px) { 
+        .flex-container .flex-container-child {
+            @apply ml-0
+        }
+
+        .flex-container .flex-container-child:nth-child(2n+1) {
+            margin-left:0;
+        }
+     }
+
+     @media (min-width: 768px) { 
+        .flex-container .flex-container-child {
+            @apply ml-0
+        }
+
+        .flex-container .flex-container-child:nth-child(2n+1) {
+            margin-left:0;
+        }
+
+        .flex-container .flex-container-child:nth-child(2n) {
+            @apply mr-4
+        }
+
+        .flex-container .flex-container-child:first-child {
+            @apply mr-0
+        }
+     }
+     @media (min-width: 1024px) { 
+        .flex-container .flex-container-child {
+            @apply ml-4 mt-4
+        }
+
+        .flex-container .flex-container-child:nth-child(2n+1) {
+            @apply ml-0
+        }
+
+        .flex-container .flex-container-child:nth-child(2n) {
+            @apply mr-0
+        }
+    }
+
+    .flex-container .flex-container-child {
+        @apply  mt-4
+    }
+
+    .flex-container .flex-container-child:last-child{
+        @apply  mr-0
+    }
+  }
+
+  a {
+      @apply rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow focus-visible:ring-offset-yellow focus-visible:ring-offset-2 focus-visible:border-yellow
   }
 

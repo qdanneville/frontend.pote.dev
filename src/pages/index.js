@@ -1,8 +1,7 @@
 import React from 'react'
-import { dehydrate, QueryClient } from 'react-query'
 import Head from 'next/head'
-import { fetchFormations } from '../hooks'
-import { FormationList } from '../components/FormationList'
+
+import Formations from './formations'
 
 export default function Home() {
 
@@ -12,23 +11,8 @@ export default function Home() {
         <title>Pote.dev</title>
       </Head>
       <section>
-        <h1 className="text-2xl font-light underline text-yellow">
-          Formations lists :
-        </h1>
-        <FormationList />
+        <Formations/>
       </section>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery(['formations'], () => fetchFormations())
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  }
 }

@@ -23,14 +23,14 @@ const navigationList = [
 
 export const Header = () => {
     return (
-        <Popover className="relative">
+        <Popover className="relative z-50">
             <header className='flex justify-between md:flex-1 items-center py-4'>
                 <Logo />
                 <ul className='hidden md:flex flex-1 space-x-10 lg:justify-center md:justify-start'>
                     {
                         navigationList.map(nav => (
                             <Link key={nav.link} href={nav.link}>
-                                <a className='hover:underline'>{nav.label}</a>
+                                <a className='p-2 hover:underline rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow focus-visible:ring-offset-yellow focus-visible:ring-offset-2 focus-visible:border-yellow'>{nav.label}</a>
                             </Link>)
                         )
                     }
@@ -38,7 +38,7 @@ export const Header = () => {
                 <ul className='hidden md:flex items-center'>
                     <li>
                         <Link href={'/inscription'}>
-                            <a className=''>S'inscrire</a>
+                            <a className='p-2'>S'inscrire</a>
                         </Link>
                     </li>
                     <li>
@@ -48,7 +48,7 @@ export const Header = () => {
                     </li>
                 </ul>
                 <div className="-my-2 md:hidden">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow focus-visible:ring-offset-yellow focus-visible:ring-offset-2 focus-visible:border-yellow">
                         <span className="sr-only">Open menu</span>
                         <MenuIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -69,7 +69,7 @@ export const Header = () => {
                             <div className="flex items-center justify-between">
                                 <Logo />
                                 <div className="-mr-2">
-                                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow">
                                         <span className="sr-only">Close menu</span>
                                         <XIcon className="h-6 w-6" aria-hidden="true" />
                                     </Popover.Button>
@@ -80,7 +80,7 @@ export const Header = () => {
                                     {navigationList.map((item) => (
                                         <Link key={item.label}
                                             href={item.link}>
-                                            <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                                            <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow focus-visible:ring-offset-yellow focus-visible:ring-offset-2 focus-visible:border-yellow">
                                                 <span className="ml-3 text-base font-medium text-gray-900">{item.label}</span>
                                             </a>
                                         </Link>

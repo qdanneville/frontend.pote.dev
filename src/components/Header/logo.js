@@ -6,7 +6,7 @@ import LogoSvg from '../../../public/potedev.svg'
 export const Logo = () => {
     return (
         <Link href='/' >
-            <a className="pr-10">
+            <a className="mr-10">
                 <span className="sr-only">Pote.dev</span>
                 <Image
                     src={LogoSvg}
