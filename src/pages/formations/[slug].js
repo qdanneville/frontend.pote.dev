@@ -2,6 +2,8 @@ import { dehydrate, QueryClient } from 'react-query'
 import { fetchAllFormationsSlug, fetchFormationBySlug, useFormationBySlug } from '../../hooks'
 import { useRouter } from 'next/router'
 
+import { FormationSyllabusHeader } from '../../components/FormationSyllabus/formationSyllabusHeader'
+
 export default function Formation() {
 
     const router = useRouter()
@@ -13,9 +15,7 @@ export default function Formation() {
     if (isLoading) return <div>Loading</div>
 
     return <>
-        {title ? title : ''}
-        <br />
-        <br />
+        <FormationSyllabusHeader />
     </>
 }
 

@@ -5,7 +5,7 @@ import { FormationList } from '../../components/FormationList'
 
 export default function () {
     return (
-        <section className='flex'>
+        <section className='min-h-full max-w-7xl mx-auto px-4'>
             <FormationList />
         </section>
     )

@@ -4,33 +4,36 @@ import Link from 'next/link'
 import { Logo } from './logo'
 
 import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon, } from '@heroicons/react/outline'
+import { MenuIcon, XIcon, AcademicCapIcon, BookOpenIcon, PuzzleIcon } from '@heroicons/react/outline'
 
 const navigationList = [
     {
         label: "Formation",
-        link: "/formations"
+        link: "/formations",
+        icon: <AcademicCapIcon className="h-6 w-6 mr-2" />
     },
     {
         label: "Cours",
-        link: "/cours"
+        link: "/cours",
+        icon: <BookOpenIcon className="h-6 w-6 mr-2" />
     },
     {
         label: "Projets",
-        link: "/projets"
+        link: "/projets",
+        icon: <PuzzleIcon className="h-6 w-6 mr-2" />
     }
 ]
 
 export const Header = () => {
     return (
-        <Popover className="relative z-50">
+        <Popover className="relative z-50 min-h-full max-w-7xl mx-auto px-4">
             <header className='flex justify-between md:flex-1 items-center py-4'>
                 <Logo />
                 <ul className='hidden md:flex flex-1 space-x-10 lg:justify-center md:justify-start'>
                     {
                         navigationList.map(nav => (
                             <Link key={nav.link} href={nav.link}>
-                                <a className='p-2 hover:underline rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow focus-visible:ring-offset-yellow focus-visible:ring-offset-2 focus-visible:border-yellow'>{nav.label}</a>
+                                <a className='flex items-center text-dark-blue-900 hover:text-slate-500 font-medium p-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow focus-visible:ring-offset-yellow focus-visible:ring-offset-2 focus-visible:border-yellow'>{nav.icon} {nav.label}</a>
                             </Link>)
                         )
                     }
@@ -97,7 +100,7 @@ export const Header = () => {
                                     Déjà inscrit ?{' '}
                                     <Link href={'/connexion'}>
                                         <a className="font-medium text-dark-blue-900 hover:text-dark-blue-500 relative">
-                                        <Popover.Button className='focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>Se connecter</Popover.Button>
+                                            <Popover.Button className='focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>Se connecter</Popover.Button>
                                         </a>
                                     </Link>
                                 </p>
