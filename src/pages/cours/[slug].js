@@ -1,27 +1,25 @@
 import { dehydrate, QueryClient } from 'react-query'
-import { fetchAllFormationsSlug, fetchFormationBySlug, useFormationBySlug } from '../../hooks'
+import { fetchAllCoursesSlug, fetchCourseBySlug, useCourseBySlug } from '../../hooks'
 import { useRouter } from 'next/router'
 
-import { FormationSyllabusHeader } from '../../components/FormationSyllabus/formationSyllabusHeader'
-
-export default function Formation() {
+export default function Course() {
 
     const router = useRouter()
     const { slug } = router.query
 
-    const { data, isLoading } = useFormationBySlug(slug)
+    const { data, isLoading } = useCourseBySlug(slug)
 
-    console.log('formation data : ', data);
+    console.log('course data : ', data);
 
     if (isLoading) return <div>Loading</div>
 
     return <>
-        <FormationSyllabusHeader />
+        <h1>Cours : id</h1>
     </>
 }
 
 export async function getStaticPaths() {
-    const paths = await fetchAllFormationsSlug()
+    const paths = await fetchAllCoursesSlug()
     return {
         paths,
         fallback: true,
@@ -31,7 +29,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const queryClient = new QueryClient()
 
-    await queryClient.prefetchQuery(['formation'], () => fetchFormationBySlug(params.slug))
+    await queryClient.prefetchQuery(['course'], () => fetchCourseBySlug(params.slug))
 
     return {
         props: {

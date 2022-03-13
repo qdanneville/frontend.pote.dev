@@ -1,8 +1,24 @@
 import api from '../../utils/api'
 import { useQuery } from 'react-query'
 
-const fetchFormations = async () => {
-    const response = await api.get('/formations')
+const fetchFormations = async (filtersProps = null) => {
+
+    let difficultyFilter;
+    let technologyFilter;
+    let filters = '';
+
+    if (filtersProps) {
+        const { difficulty, technology } = filtersProps
+
+        difficultyFilter = difficulty === 'Tous' || difficulty === '' ? '' : `difficulty=${difficulty}`
+        technologyFilter = technology === 'Toutes' || technology === '' ? '' : `technology=${technology}`
+
+        if (difficultyFilter && technologyFilter) difficultyFilter += '&'
+
+        filters = difficultyFilter + technologyFilter
+    }
+
+    const response = await api.get(`/formations?${filters}`)
     return response.data
 }
 
@@ -17,11 +33,11 @@ const fetchFormationBySlug = async (slug) => {
 }
 
 const useFormationBySlug = (slug) => {
-    return useQuery(['formation'], () => fetchFormationBySlug(slug))
+    return useQuery([`formation/${slug}`], () => fetchFormationBySlug(slug))
 }
 
-const useFormations = () => {
-    return useQuery(['formations'], () => fetchFormations())
+const useFormations = (filters) => {
+    return useQuery(['formations', filters], () => fetchFormations(filters), { keepPreviousData : true })
 }
 
 export { useFormations, fetchFormations, fetchAllFormationsSlug, fetchFormationBySlug, useFormationBySlug }

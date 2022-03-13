@@ -12,19 +12,29 @@ module.exports = {
             transparent: 'transparent',
             current: 'currentColor',
             'white': '#ffffff',
-            'yellow': '#FED18A',
+            'yellow': {
+                500: '#FFF0D8',
+                900: '#FED18A'
+            },
             'dark-blue': {
                 500: '#45406d',
                 900: '#2A2744',
-              },
-            'blue': '#A6BFFF',
+            },
+            'blue': {
+                500: '#A6BFFF',
+                900: '#2F296D',
+            },
             'pink': '#FFC3C3',
-            'red':colors.red,
-            'green':colors.green,
-            'black':colors.black,
-            'gray':colors.gray,
-            'teal':colors.teal,
-            'slate':colors.slate
+            'salmon': {
+                500: '#FFD1D1',
+                900: '#FF8585'
+            },
+            'red': colors.red,
+            'green': colors.green,
+            'black': colors.black,
+            'gray': colors.gray,
+            'teal': colors.teal,
+            'slate': colors.slate
         },
     }
     // ...
