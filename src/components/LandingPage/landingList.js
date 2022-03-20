@@ -1,21 +1,14 @@
 import React from 'react'
-import { LandingItem } from './landingItem'
+import { LandingListItem } from './landingListItem'
 
-export const LandingList = ({ data, parent }) => {
+export const LandingList = ({ data, parent, itemType }) => {
 
     return (
-        <div className='flex flex-row justify-start'>
-            <aside className='mr-4'>
-                <p>Tags</p>
-                <ul>
-                    <p>fondamenteaux</p>
-                    <p>Exercice</p>
-                </ul>
-            </aside>
+        <div className='flex flex-1 flex-row justify-start'>
             <ul className='flex flex-1 flex-wrap flex-row justify-between'>
                 {
                     data?.map((data) => (
-                        <LandingItem key={data.title} {...data} parent={parent} />
+                        <LandingListItem key={data.title} {...data} parent={parent} itemType={itemType}/>
                     ))
                 }
             </ul>

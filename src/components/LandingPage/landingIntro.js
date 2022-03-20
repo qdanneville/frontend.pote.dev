@@ -10,7 +10,7 @@ export const LandingIntro = ({ children, bgColor }) => {
             <div className='text-lg mt-4'>{children.filter(child => child.type === 'p')}</div>
         </div>
         <div className='h-100'>
-            <div className={`rounded-lg shadow-lg p-7 flex flex-col ${bgColor && bgColor}`}>
+            <div className={`rounded-lg shadow-lg p-7 flex flex-col ${bgColor && 'bg-'+bgColor}`}>
                 <Transition
                     appear={true}
                     show={true}

@@ -33,7 +33,7 @@ const fetchFormationBySlug = async (slug) => {
 }
 
 const useFormationBySlug = (slug) => {
-    return useQuery([`formation/${slug}`], () => fetchFormationBySlug(slug))
+    return useQuery([`formations/${slug}`,slug], () => fetchFormationBySlug(slug))
 }
 
 const useFormations = (filters) => {

@@ -5,17 +5,21 @@ const fetchCourses = async (filtersProps = null) => {
 
     let difficultyFilter;
     let technologyFilter;
+    let tagsFilter;
     let filters = '';
 
     if (filtersProps) {
-        const { difficulty, technology } = filtersProps
+        const { difficulty, technology, tags } = filtersProps
 
-        difficultyFilter = difficulty === 'Tous' || difficulty === '' ? '' : `difficulty=${difficulty}`
-        technologyFilter = technology === 'Toutes' || technology === '' ? '' : `technology=${technology}`
-
-        if (difficultyFilter && technologyFilter) difficultyFilter += '&'
+        difficultyFilter = difficulty === 'Tous' || difficulty === '' || difficulty === null ? '' : `&difficulty=${difficulty}`
+        technologyFilter = technology === 'Toutes' || technology === '' || technology === null ? '' : `&technology=${technology}`
+        tagsFilter = tags.map(tag => `&tags=${tag}`)
 
         filters = difficultyFilter + technologyFilter
+
+        if (tagsFilter.length > 0) {
+            tagsFilter.forEach(tag => filters = filters + tag)
+        }
     }
 
     const response = await api.get(`/courses?${filters}`)
@@ -33,7 +37,7 @@ const fetchCourseBySlug = async (slug) => {
 }
 
 const useCourseBySlug = (slug) => {
-    return useQuery([`course/${slug}`], () => fetchCourseBySlug(slug))
+    return useQuery([`courses/${slug}`, slug], () => fetchCourseBySlug(slug))
 }
 
 const useCourses = (filters) => {

@@ -3,6 +3,8 @@ import { fetchAllFormationsSlug, fetchFormationBySlug, useFormationBySlug } from
 import { useRouter } from 'next/router'
 
 import { FormationSyllabusHeader } from '../../components/FormationSyllabus/formationSyllabusHeader'
+import { FormationSyllabusDescription } from '../../components/FormationSyllabus/formationSyllabusDescription'
+import { FormationSyllabusCoursesList } from '../../components/FormationSyllabus/formationSyllabusCoursesList'
 
 export default function Formation() {
 
@@ -11,12 +13,14 @@ export default function Formation() {
 
     const { data, isLoading } = useFormationBySlug(slug)
 
-    console.log('formation data : ', data);
-
-    if (isLoading) return <div>Loading</div>
+    // if (isLoading) return <div>Loading</div>
 
     return <>
-        <FormationSyllabusHeader />
+        <FormationSyllabusHeader {...data} />
+        <div className='flex flex-col min-h-full max-w-7xl w-full mx-auto px-4 mt-10'>
+            <FormationSyllabusDescription {...data} />
+            <FormationSyllabusCoursesList courses={data?.courses} from={{ label: data?.title, link: `/formations/${slug}` }} />
+        </div>
     </>
 }
 
@@ -31,7 +35,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const queryClient = new QueryClient()
 
-    await queryClient.prefetchQuery(['formation'], () => fetchFormationBySlug(params.slug))
+    await queryClient.prefetchQuery([`formations/${params.slug}`,params.slug], () => fetchFormationBySlug(params.slug))
 
     return {
         props: {

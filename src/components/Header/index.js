@@ -30,14 +30,14 @@ export const Header = () => {
     const router = useRouter();
 
     return (
-        <Popover className="relative z-50 min-h-full max-w-7xl mx-auto px-4">
+        <Popover className="relative z-50 min-h-full max-w-7xl mx-auto px-4 overflow-hidden">
             <header className='flex justify-between md:flex-1 items-center py-4'>
                 <Logo />
                 <ul className='hidden md:flex flex-1 space-x-6 lg:justify-center md:justify-start'>
                     {
                         navigationList.map(nav => (
                             <Link key={nav.link} href={nav.link}>
-                                <a className={`${router.pathname === nav.link && 'text-salmon-900'} flex items-center text-dark-blue-900 hover:text-salmon-500 font-medium p-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow-900 focus-visible:ring-offset-yellow-900 focus-visible:ring-offset-2 focus-visible:border-yellow-900`}>{nav.label}</a>
+                                <a className={`${router.pathname.includes(nav.link) && 'text-salmon-900 bg-slate-200'} flex items-center text-dark-blue-900 hover:bg-slate-200 font-medium p-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow-900 focus-visible:ring-offset-yellow-900 focus-visible:ring-offset-2 focus-visible:border-yellow-900`}>{nav.label}</a>
                             </Link>)
                         )
                     }
