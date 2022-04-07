@@ -1,24 +1,19 @@
 import { dehydrate, QueryClient } from 'react-query'
-import { fetchAllCoursesSlug, fetchCourseBySlug, useCourseBySlug } from '../../hooks'
+import { fetchAllCoursesSlug, fetchCourseBySlug, useCourseBySlug } from '../../../hooks'
 import { useRouter } from 'next/router'
 
-import { CourseSyllabusHeader } from '../../components/CourseSyllabus/courseSyllabusHeader'
-import { CourseSyllabusDescription } from '../../components/CourseSyllabus/courseSyllabusDescription'
-import { CourseSyllabusChaptersList } from '../../components/CourseSyllabus/courseSyllabusChaptersList'
+import { CourseSyllabusHeader } from '../../../components/CourseSyllabus/courseSyllabusHeader'
+import { CourseSyllabusDescription } from '../../../components/CourseSyllabus/courseSyllabusDescription'
+import { CourseSyllabusChaptersList } from '../../../components/CourseSyllabus/courseSyllabusChaptersList'
 
-import { Loader } from '../../components/Common/loader'
+import { Loader } from '../../../components/Common/loader'
 
 export default function Course(props) {
-
-    // console.log('props course : ', props.dehydratedState.queries[0].state.data);
-    console.log('props course : ', props);
 
     const router = useRouter()
     const { slug } = router.query
 
     const { data } = useCourseBySlug(slug)
-
-    console.log('data : ', data);
 
     return <>
         <CourseSyllabusHeader {...data} />

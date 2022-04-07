@@ -36,9 +36,11 @@ export const Header = () => {
                 <ul className='hidden md:flex flex-1 space-x-6 lg:justify-center md:justify-start'>
                     {
                         navigationList.map(nav => (
-                            <Link key={nav.link} href={nav.link}>
-                                <a className={`${router.pathname.includes(nav.link) && 'text-salmon-900 bg-slate-200'} flex items-center text-dark-blue-900 hover:bg-slate-200 font-medium p-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow-900 focus-visible:ring-offset-yellow-900 focus-visible:ring-offset-2 focus-visible:border-yellow-900`}>{nav.label}</a>
-                            </Link>)
+                            <li key={nav.label}>
+                                <Link key={nav.link} href={nav.link}>
+                                    <a className={`${router.pathname.includes(nav.link) && 'text-salmon-900 bg-slate-200'} flex items-center text-dark-blue-900 hover:bg-slate-200 font-medium p-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow-900 focus-visible:ring-offset-yellow-900 focus-visible:ring-offset-2 focus-visible:border-yellow-900`}>{nav.label}</a>
+                                </Link>
+                            </li>)
                         )
                     }
                 </ul>
