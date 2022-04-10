@@ -6,9 +6,9 @@ import { ArrowSmRightIcon, ArrowSmLeftIcon } from '@heroicons/react/outline'
 
 
 export const LessonHeader = (props) => {
-    return <header className='flex items-center justify-between border-b-4 bg-slate-100 border-dark-blue-900 py-4 sticky top-0'>
+    return <header className='flex items-center justify-between border-b-4 bg-slate-100 border-dark-blue-900 py-4 sticky top-0 px-4 md:px-0'>
         {
-            props.prev && <div className='flex items-center'>
+            props.prev && <div className='items-center hidden md:flex'>
 
                 <Link href={`/cours/${props.nav.course.slug}/${props.prev.slug}`}>
                     <a className='text-dark-blue-900 text-sm flex items-center hover:underline'>
@@ -20,7 +20,7 @@ export const LessonHeader = (props) => {
         }
         <h1 className='text-xl text-dark-blue-900 font-medium'>{props.title}</h1>
         {
-            props.next && <div className='flex items-center'>
+            props.next && <div className='items-center hidden md:flex'>
                 <Link href={`/cours/${props.nav.course.slug}/${props.next.slug}`}>
                     <a className='text-dark-blue-900 text-sm flex items-center hover:underline'>
                         {props.next.title}

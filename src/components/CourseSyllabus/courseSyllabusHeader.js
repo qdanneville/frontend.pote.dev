@@ -13,7 +13,7 @@ export const CourseSyllabusHeader = (props) => {
                 <h1 className='text-white text-6xl pt-10'>{props.title}</h1>
                 <div className='flex flex-row justify-start items-center pt-10 mt-10'>
                     <Difficulty difficulty={props.difficulty} large />
-                    <span className='text-sm text-white flex items-center ml-3'><ClockIcon className="h-6 w-6 mr-1" aria-hidden="true" /> 15 heures</span>
+                    {/* <span className='text-sm text-white flex items-center ml-3'><ClockIcon className="h-6 w-6 mr-1" aria-hidden="true" /> 15 heures</span> */}
                 </div>
             </div>
         </div>

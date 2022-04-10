@@ -14,8 +14,8 @@ export const CourseSyllabusChapterItem = (props) => {
     return (
         <li className="w-full relative">
             <div className='bg-white rounded-2xl relative p-2'>
-                {props.index && <div className='absolute top-2 -left-[80px] w-full flex justify-start items-center'>
-                    <span className='px-4 py-1 bg-yellow-900 rounded-lg text-xl shadow-sm'>{props.index}</span>
+                {props.index && <div className='absolute top-2 -left-[35px] md:-left-[80px] w-full flex justify-start items-center'>
+                    <span className='px-3 md:px-4 py-1 bg-yellow-900 rounded-lg text-base md:text-xl shadow-sm'>{props.index}</span>
                 </div>}
                 <Disclosure>
                     {({ open }) => (
@@ -30,9 +30,9 @@ export const CourseSyllabusChapterItem = (props) => {
                                         } w-5 h-5 text-purple-500`}
                                 />
                             </Disclosure.Button>
-                            <Disclosure.Panel className="px-4 text-sm text-gray-500 relative my-2">
+                            <Disclosure.Panel className="px-2 md:px-4 text-sm text-gray-500 relative my-2">
                                 <div className='absolute top-0 left-5 h-full w-1 bg-slate-200 rounded-full'></div>
-                                <ul className='flex flex-col justify-start items-start ml-6 relative'>
+                                <ul className='flex flex-col justify-start items-start ml-2 md:ml-6 relative'>
                                     {props.lessons?.map((lesson, i) =>
                                         <li key={lesson.title}>
                                             <Link
@@ -41,7 +41,7 @@ export const CourseSyllabusChapterItem = (props) => {
                                             >
                                                 <a
                                                     onMouseEnter={() => setCurrentHoveredItem(lesson.title)} onMouseLeave={() => setCurrentHoveredItem("")}
-                                                    className='hover:pr-7 hover:underline hover:bg-slate-100 hover:text-dark-blue-900 duration-200 ease relative rounded-full py-1 px-4 mr-1 mb-2 capitalize flex flex-row items-center text-md font-medium cursor-pointer'>
+                                                    className='hover:pr-7 hover:underline hover:bg-slate-100 hover:text-dark-blue-900 duration-200 ease relative rounded-full py-1 px-4 mr-1 mb-2 capitalize flex flex-row items-center text-md font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-yellow-900 focus:ring-offset-2 focus:ring-offset-yellow-900'>
                                                     {lesson.title}
                                                     <Transition
                                                         show={currentHoveredItem === lesson.title}
@@ -66,7 +66,7 @@ export const CourseSyllabusChapterItem = (props) => {
                     )}
                 </Disclosure>
             </div>
-            <div className='w-full border-dashed border-b-2 border-slate-300 my-4'></div>
+            {!props.last && <div className='w-full border-dashed border-b-2 border-slate-300 my-4'></div>}
         </li>
     )
 }

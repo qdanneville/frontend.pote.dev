@@ -7,7 +7,7 @@ import { Logo } from './logo'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, AcademicCapIcon, BookOpenIcon, PuzzleIcon } from '@heroicons/react/outline'
 
-const navigationList = [
+export const navigationList = [
     {
         label: "Formation",
         link: "/formations",
@@ -18,11 +18,11 @@ const navigationList = [
         link: "/cours",
         icon: <BookOpenIcon className="h-6 w-6 mr-2" />
     },
-    {
-        label: "Projets",
-        link: "/projets",
-        icon: <PuzzleIcon className="h-6 w-6 mr-2" />
-    }
+    // {
+    //     label: "Projets",
+    //     link: "/projets",
+    //     icon: <PuzzleIcon className="h-6 w-6 mr-2" />
+    // }
 ]
 
 export const Header = () => {
@@ -30,7 +30,7 @@ export const Header = () => {
     const router = useRouter();
 
     return (
-        <Popover className="relative z-50 min-h-full max-w-7xl mx-auto px-4 overflow-hidden">
+        <Popover className="relative z-50 min-h-full max-w-7xl mx-auto px-4">
             <header className='flex justify-between md:flex-1 items-center py-4'>
                 <Logo />
                 <ul className='hidden md:flex flex-1 space-x-6 lg:justify-center md:justify-start'>
@@ -89,8 +89,8 @@ export const Header = () => {
                                     {navigationList.map((nav) => (
                                         <Link key={nav.label}
                                             href={nav.link}>
-                                            <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow-900 focus-visible:ring-offset-yellow-900 focus-visible:ring-offset-2 focus-visible:border-yellow-900">
-                                                <span className={` ${router.pathname === nav.link && 'text-salmon-900'} ml-3 text-base font-medium`}>{nav.label}</span>
+                                            <a className="-m-3 p-3 flex items-start justify-start rounded-md hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-yellow-900 focus-visible:ring-offset-yellow-900 focus-visible:ring-offset-2 focus-visible:border-yellow-900">
+                                            <Popover.Button className={`w-full text-left ${router.pathname === nav.link && 'text-salmon-900'} ml-3 text-base font-medium`}>{nav.label}</Popover.Button>
                                             </a>
                                         </Link>
                                     ))}
@@ -100,13 +100,13 @@ export const Header = () => {
                         <div className="py-6 px-5 space-y-6">
                             <div>
                                 <Link href={'/inscription'}>
-                                    <a className="w-full button relative"><Popover.Button className='w-full h-full top-0 absolute focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>S'inscrire</Popover.Button></a>
+                                    <a className="w-full relative"><Popover.Button className='button'>S'inscrire</Popover.Button></a>
                                 </Link>
                                 <p className="mt-6 text-center text-base font-light text-gray-500">
                                     Déjà inscrit ?{' '}
                                     <Link href={'/connexion'}>
                                         <a className="font-medium text-dark-blue-900 hover:text-dark-blue-500 relative">
-                                            <Popover.Button className='focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>Se connecter</Popover.Button>
+                                            <Popover.Button className='focus:outline-none focus:ring-2 focus:ring-yellow-900 focus:ring-offset-2 focus:ring-offset-yellow-900'>Se connecter</Popover.Button>
                                         </a>
                                     </Link>
                                 </p>

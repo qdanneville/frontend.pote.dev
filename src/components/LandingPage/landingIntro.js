@@ -5,11 +5,11 @@ import { Transition } from '@headlessui/react'
 
 export const LandingIntro = ({ children, bgColor }) => {
     return <section className='flex flex-row justify-evenly mt-20 mb-20'>
-        <div className='flex flex-col pr-20'>
+        <div className='flex flex-col pr-0 md:pr-20'>
             <div className='text-5xl font-extralight'>{children.filter(child => child.type === 'h1')}</div>
             <div className='text-lg mt-4'>{children.filter(child => child.type === 'p')}</div>
         </div>
-        <div className='h-100'>
+        <div className='hidden md:flex h-100'>
             <div className={`rounded-lg shadow-lg p-7 flex flex-col ${bgColor && 'bg-'+bgColor}`}>
                 <Transition
                     appear={true}

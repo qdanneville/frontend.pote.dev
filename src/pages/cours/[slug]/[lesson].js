@@ -15,16 +15,16 @@ export default function Lesson(props) {
 
     const { data } = useLessonBySlug(lesson)
 
-    return <div className='flex min-h-full max-w-7xl mx-auto px-4 mt-10 relative'>
-        <div className='w-1/4 sticky'>
+    return <div className='flex md:flex-row flex-col min-h-full max-w-7xl mx-auto px-0 md:px-4 mt-10 relative'>
+        <div className='w-full md:w-1/4 sticky px-4 md:px-0'>
             <LessonNavigation nav={props?.nav} lessonSlug={lesson} />
         </div>
-        <div className='flex flex-col flex-1 w-3/4'>
+        <div className='flex flex-col flex-1 w-full md:w-3/4'>
 
             <LessonHeader nav={props?.nav} title={data?.title} prev={props?.prev} next={props?.next} />
             {
                 data && data.notionContent &&
-                <article className='bg-white py-4 px-6'>
+                <article className='bg-white py-4 md:px-6 px-4'>
                     <NotionRenderer blockMap={data?.notionContent} />
                 </article>
             }

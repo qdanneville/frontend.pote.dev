@@ -8,7 +8,7 @@ export const Breadcrumb = ({ parent, item, dark }) => {
     const router = useRouter()
 
     return (
-        <div className={` ${dark && 'bg-white'} flex items-center rounded-lg shadow-lg ring-1 ring-slate-500 py-2 px-4`}>
+        <div className={` ${dark && 'bg-white'} hidden md:flex items-center rounded-lg shadow-lg ring-1 ring-slate-500 py-2 px-4`}>
             <Link href={'/'}><a className={`${dark ? 'text-dark-blue-900 hover:bg-slate-100 hover:text-dark-blue-900' : 'text-white hover:bg-slate-100 hover:text-dark-blue-900'}  px-2`}><HomeIcon className='w-6 h-6' /></a></Link>
 
             {router.query.label && router.query.link && <>
